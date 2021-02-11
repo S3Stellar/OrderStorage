@@ -1,31 +1,34 @@
 package demo;
 
 public class OrderBoundary {
-	
-	private String shoppingCartId;
-	private boolean expired;
-	
-	
+
+	public Order order;
+	public User user;
+
 	public OrderBoundary() {
+
 	}
-	
-	public OrderBoundary(String shoppingCartId,boolean expired) {
+
+	public OrderBoundary(Order order, User user) {
 		super();
-		this.shoppingCartId = shoppingCartId;
-		this.expired = expired;
+		this.order = order;
+		this.user = user;
 	}
-	
-	public String getShoppingCartId() {
-		return shoppingCartId;
+
+	public Order getOrder() {
+		return order;
 	}
-	public void setShoppingCartId(String shoppingCartId) {
-		this.shoppingCartId = shoppingCartId;
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
-	public boolean isExpired() {
-		return expired;
+
+	public User getUser() {
+		return user;
 	}
-	public void setExpired(boolean expired) {
-		this.expired = expired;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

@@ -17,15 +17,16 @@ public class StorageController {
 
 	public StorageController() {
 		orderBoundarylist = new ArrayList<>();
-		for (int i = 0; i < 5; i++) {
-			orderBoundarylist.add(new OrderBoundary(i + "", i % 2 == 0 ? true : false));
+		for (int i = 0; i < 10; i++) {
+			orderBoundarylist.add(new OrderBoundary(new Order(i + "", i % 2 == 0 ? true : false),
+					new User(i % 4 == 0 ? "Jonathan@gmail.com" : "Gil@gmail.com")));
 		}
 	}
 
 	@RequestMapping(path = "/shoppingCarts/{shoppingCartId}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<OrderBoundary> store(@PathVariable("shoppingCartId") String shoppingCartId,
-			@RequestBody boolean expired) {
-		orderBoundarylist.add(new OrderBoundary(shoppingCartId, expired));
+			@RequestBody boolean expired, String email) {
+		orderBoundarylist.add(new OrderBoundary(new Order(shoppingCartId, expired), new User(email)));
 
 		return orderBoundarylist;
 	}
